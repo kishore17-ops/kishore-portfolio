@@ -857,7 +857,8 @@ footer p{
     }
 
     .hero{
-        padding-top:150px;
+        padding:80px 10% 60px;
+        min-height:calc(100vh - 80px);
     }
 
 }
