@@ -10,6 +10,7 @@ body{
     color:white;
     overflow-x:hidden;
     min-height:100vh;
+    padding-top:80px;
 }
 
 /* Animated Background */
@@ -857,8 +858,9 @@ footer p{
     }
 
     .hero{
-        padding:80px 10% 60px;
-        min-height:calc(100vh - 80px);
+        padding:100px 10% 60px;
+        min-height:auto;
+        align-items:flex-start;
     }
 
 }
