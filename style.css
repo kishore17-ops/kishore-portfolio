@@ -795,55 +795,89 @@ footer p{
 
     backdrop-filter:blur(10px);
 }
-/* Mobile Responsive */
+/* Mobile Responsive Premium Design */
 
-@media (max-width: 768px){
+@media (max-width:768px){
+
+    /* Navbar */
 
     .navbar{
+        padding:12px;
         flex-direction:column;
-        gap:15px;
-        padding:15px;
+    }
+
+    .logo{
+        font-size:1.2rem;
     }
 
     .nav-links{
+        gap:10px;
         flex-wrap:wrap;
         justify-content:center;
-        gap:15px;
+    }
+
+    .nav-links a{
+        font-size:0.9rem;
+    }
+
+    /* Hero Section */
+
+    .hero{
+        padding:180px 20px 60px;
+        min-height:auto;
     }
 
     .hero-content{
         flex-direction:column-reverse;
         text-align:center;
-    }
-
-    .hero-text h1{
-        font-size:2.5rem;
-    }
-
-    .hero-text h2{
-        font-size:1.2rem;
+        gap:30px;
     }
 
     .hero-image img{
-        width:220px;
-        height:220px;
+        width:180px;
+        height:180px;
+    }
+
+    .hero-text h1{
+        font-size:2rem;
+        line-height:1.2;
+    }
+
+    .hero-text h2{
+        font-size:1.1rem;
+    }
+
+    .hero-description{
+        font-size:0.95rem;
     }
 
     .hero-buttons{
-        justify-content:center;
-        flex-wrap:wrap;
+        flex-direction:column;
+        align-items:center;
+        gap:12px;
     }
 
-    .timeline::before{
-        left:20px;
+    .btn{
+        width:220px;
+        text-align:center;
     }
 
-    .timeline-item{
-        width:100%;
-        left:0 !important;
-        padding-left:60px;
-        padding-right:20px;
+    /* Sections */
+
+    .skills-section,
+    .projects-section,
+    .education-section{
+        width:95%;
+        margin:50px auto;
     }
+
+    .skills-section h2,
+    .projects-section h2,
+    .education-section h2{
+        font-size:1.8rem;
+    }
+
+    /* Cards */
 
     .skills-grid,
     .project-grid,
@@ -851,16 +885,45 @@ footer p{
         grid-template-columns:1fr;
     }
 
-    .card,
+    .skill-box,
     .project-card,
-    .skill-box{
-        width:100%;
+    .contact-box{
+        padding:20px;
     }
 
-    .hero{
-        padding:100px 10% 60px;
-        min-height:auto;
-        align-items:flex-start;
+    /* Timeline */
+
+    .timeline::before{
+        display:none;
+    }
+
+    .timeline-item{
+        width:100%;
+        left:0 !important;
+        padding:0;
+        margin-bottom:20px;
+    }
+
+    .timeline-content{
+        padding:20px;
+    }
+
+    /* Details Cards */
+
+    .card summary{
+        font-size:1.1rem;
+        padding:20px;
+    }
+
+    .card p,
+    .card ul{
+        font-size:0.95rem;
+    }
+
+    /* Footer */
+
+    footer{
+        padding:25px 15px;
     }
 
 }
