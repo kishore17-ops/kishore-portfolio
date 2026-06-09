@@ -353,6 +353,20 @@ footer p{
 .hero-text h1{
     font-size:4rem;
     margin-bottom:10px;
+
+    background:linear-gradient(
+        90deg,
+        #00ffff,
+        #ffffff,
+        #00ffff
+    );
+
+    background-size:200% auto;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:shine 4s linear infinite;
 }
 
 .hero-text h1 span{
@@ -797,6 +811,18 @@ footer p{
 }
 /* Mobile Responsive Premium Design */
 
+@keyframes shine{
+
+    0%{
+        background-position:0% center;
+    }
+
+    100%{
+        background-position:200% center;
+    }
+
+}
+
 @media (max-width:768px){
 
     /* Navbar */
@@ -839,7 +865,7 @@ footer p{
     }
 
     .hero-text h1{
-        font-size:2rem;
+        font-size:1.9rem;
         line-height:1.2;
     }
 
