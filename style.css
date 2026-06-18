@@ -1010,3 +1010,15 @@ footer p{
     color:#0077b5;
     margin-right:8px;
 }
+.tech-stack{
+    margin:15px 0;
+}
+
+.tech-stack span{
+    display:inline-block;
+    padding:6px 12px;
+    margin:5px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.1);
+    font-size:14px;
+}
