@@ -134,3 +134,16 @@ if (profileImage && lightboxOverlay) {
         }
     });
 }
+
+const aboutDetails = document.querySelector("#about");
+const aboutLinks = document.querySelectorAll("a[href='#about']");
+
+aboutLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (aboutDetails && !aboutDetails.open) {
+            aboutDetails.open = true;
+        }
+        aboutDetails?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+});

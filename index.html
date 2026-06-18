@@ -3,9 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Kishore Portfolio</title>
+
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
 </head>
 
 <body>
@@ -26,6 +33,8 @@
         <li><a href="#skills">Skills</a></li>
 
         <li><a href="#projects">Projects</a></li>
+
+        <li><a href="#certifications">Certificates</a></li>
 
         <li><a href="#contact">Contact</a></li>
 
@@ -62,23 +71,19 @@
 
             <div class="hero-buttons">
 
-                <a href="#about" class="btn">
-                    About Me
-                </a>
+                <a href="#about" class="btn">About</a>
 
-                <a href="#contact" class="btn btn-outline">
-                    Contact Me
-                </a>
-                
-                <a href="./resume.pdf" class="btn" download>
-                    Download Resume
-                </a>
+<a href="#contact" class="btn btn-outline">Contact</a>
 
-                <a href="https://www.linkedin.com/in/kishore-thiyagarajan-17112007"
-                    target="_blank"
-                    class="btn btn-outline">
-                    LinkedIn
-                </a>
+<a href="./resume.pdf" class="btn" download>
+    Resume
+</a>
+
+<a href="https://www.linkedin.com/in/kishore-thiyagarajan-17112007/"
+   target="_blank"
+   class="btn btn-outline">
+    <i class="fab fa-linkedin"></i> LinkedIn
+</a>
             </div>
 
         </div>
@@ -100,8 +105,9 @@
     </div>
 </div> 
 
-<details class="card reveal" id="about">
-    <summary>👨 About Me</summary>
+<section class="card reveal" id="about">
+
+    <h2>👨 About Me</h2>
 
     <p>
         I am Kishore T, currently pursuing B.Tech in Artificial Intelligence
@@ -110,7 +116,8 @@
         problem solving, and web development. I enjoy learning new skills
         and gaining practical experience through projects and industrial exposure.
     </p>
-</details>
+
+</section>
 
 <section class="education-section reveal" id="education">
 
@@ -148,6 +155,14 @@
 
         <div class="skill-box">⚡ C++</div>
 
+        <div class="skill-box">🌐 HTML</div>
+
+        <div class="skill-box">🎨 CSS</div>
+
+        <div class="skill-box">⚙️ JavaScript</div>
+
+        <div class="skill-box">☁️ AWS Cloud</div>
+
         <div class="skill-box">🌐 Web Development</div>
 
         <div class="skill-box">🎨 Canva Design</div>
@@ -159,7 +174,7 @@
         <div class="skill-box">🧠 Problem Solving</div>
 
         <div class="skill-box">💬 Communication</div>
-
+        
     </div>
 
     <div class="skill-progress">
@@ -191,6 +206,27 @@
             <div class="fill video">90%</div>
         </div>
     </div>
+
+    <div class="progress-item">
+    <h4>HTML/CSS</h4>
+    <div class="bar">
+        <div class="fill htmlcss">85%</div>
+    </div>
+</div>
+
+<div class="progress-item">
+    <h4>JavaScript</h4>
+    <div class="bar">
+        <div class="fill js">75%</div>
+    </div>
+</div>
+
+<div class="progress-item">
+    <h4>AWS Cloud</h4>
+    <div class="bar">
+        <div class="fill aws">80%</div>
+    </div>
+</div>
 
 
 
@@ -232,9 +268,51 @@
     </div>
 
 </section>
+<section class="projects-section reveal" id="certifications">
 
+    <h2>🏆 Certifications</h2>
+
+    <div class="project-grid">
+
+        <div class="project-card">
+            
+            <h3>🌐 Web Development (HTML/CSS/JS)</h3>
+
+            <p>
+                Successfully completed a 6-week internship
+                in Web Development at BeeSkilled.
+            </p>
+            <a href="web-certificate.png"
+   target="_blank"
+   class="btn">
+   View Certificate
+</a>
+        </div>
+
+        <div class="project-card">
+            
+
+            <h3>☁️ Cloud Computing with AWS</h3>
+
+            <p>
+                Successfully completed a 6-week internship
+                in Cloud Computing with AWS at BeeSkilled.
+            </p>
+            <a href="aws-certificate.png"
+   target="_blank"
+   class="btn">
+   View Certificate
+</a>
+        </div>
+
+    </div>
+
+</section>
 <details class="card">
-    <summary>🏭 Industrial Exposure</summary>
+    <summary>
+        🏭 Industrial Exposure
+        <span class="view-btn">explore</span>
+    </summary>
     <p>
         Participated in an International Industrial Visit to Malaysia,
         gaining practical exposure to emerging technologies,
@@ -244,7 +322,10 @@
 </details>
 
 <details class="card">
-    <summary>🌍 Languages</summary>
+    <summary>
+        🌍 Languages
+        <span class="view-btn">Click Here</span>
+    </summary>
     <ul>
         <li>Tamil</li>
         <li>English</li>
@@ -252,7 +333,10 @@
 </details>
 
 <details class="card reveal" id="contact">
-    <summary>📞 Contact</summary>
+    <summary>
+        📞 Contact
+        <span class="view-btn">Click Here</span>
+    </summary>
 <div class="contact-grid">
 
     <div class="contact-box">
@@ -284,12 +368,18 @@
     </div>
 
     <div class="contact-box">
-        <h3>💼 LinkedIn</h3>
-        <p>
-    <a href="https://www.linkedin.com/in/kishore-thiyagarajan-17112007"
-       target="_blank">
-       View LinkedIn Profile
-    </a>
+    <h3>
+        <i class="fab fa-linkedin"></i>
+        LinkedIn
+    </h3>
+
+    <p>
+        <a href="https://www.linkedin.com/in/kishore-thiyagarajan-17112007/"
+           target="_blank">
+           View LinkedIn Profile
+        </a>
+    </p>
+</div>
 </p>
     </div>
 

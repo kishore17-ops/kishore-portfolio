@@ -5,12 +5,20 @@
     font-family:'Poppins',sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body{
     background:#050816;
     color:white;
     overflow-x:hidden;
     min-height:100vh;
     padding-top:80px;
+}
+
+details.card {
+    scroll-margin-top:120px;
 }
 
 /* Animated Background */
@@ -778,6 +786,19 @@ footer p{
 .video{
     width:85%;
 }
+
+.htmlcss{
+    width:85%;
+}
+
+.js{
+    width:75%;
+}
+
+.aws{
+    width:80%;
+}
+
 .contact-box a{
     color:#00ffff;
     text-decoration:none;
@@ -952,4 +973,40 @@ footer p{
         padding:25px 15px;
     }
 
+}
+.project-card img{
+    width:100%;
+    border-radius:15px;
+    margin-bottom:15px;
+    transition:0.4s;
+    cursor:pointer;
+}
+
+.project-card img:hover{
+    transform:scale(1.03);
+}
+.project-card p{
+    margin-bottom:25px;
+}
+
+.project-card .btn{
+    display:inline-block;
+}
+.view-btn{
+    float:right;
+    font-size:0.8rem;
+    padding:6px 12px;
+    border-radius:20px;
+    background:rgba(0,255,255,0.15);
+    border:1px solid rgba(0,255,255,0.4);
+    color:#00ffff;
+    font-weight:500;
+}
+.btn i{
+    margin-right:8px;
+    font-size:18px;
+}
+.contact-box .fa-linkedin{
+    color:#0077b5;
+    margin-right:8px;
 }
