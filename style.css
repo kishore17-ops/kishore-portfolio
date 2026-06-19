@@ -522,6 +522,9 @@ footer p{
 
     z-index:1000;
 }
+.hamburger{
+    display:none;
+}
 
 .logo{
     font-size:1.5rem;
@@ -544,6 +547,35 @@ footer p{
 
 .nav-links a:hover{
     color:#00ffff;
+}
+
+/* Mobile: show hamburger on small screens and keep logo left, hamburger right */
+@media (max-width: 768px) {
+    .navbar{
+        padding:12px 5%;
+        justify-content:space-between;
+        align-items:center;
+        flex-wrap:nowrap;
+    }
+
+    .logo{
+        font-size:1.25rem;
+        order:1;
+    }
+
+    .hamburger{
+        display:block;
+        order:2;
+        font-size:1.4rem;
+        color:#ffffff;
+        cursor:pointer;
+        background:transparent;
+        border:none;
+    }
+
+    .nav-links{
+        display:none;
+    }
 }
 
 /* Smooth Scroll */
