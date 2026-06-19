@@ -152,3 +152,45 @@ function toggleMenu() {
     .querySelector(".nav-links")
     .classList.toggle("active");
 }
+const skillItems = document.querySelectorAll(".progress-item");
+
+function animateSkillCount(el, target, duration) {
+    const startTime = performance.now();
+
+    function tick(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        el.textContent = Math.round(target * progress) + "%";
+        if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+}
+
+const skillObserver = new IntersectionObserver((entries, obs) => {
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+            const item = entry.target;
+            const value = parseInt(item.dataset.value, 10);
+            const fill = item.querySelector(".fill");
+            const percentLabel = item.querySelector(".skill-percent");
+
+            item.classList.add("in-view");
+
+            requestAnimationFrame(() => {
+                fill.style.width = value + "%";
+            });
+
+            animateSkillCount(percentLabel, value, 1400);
+
+            obs.unobserve(item); // animate once only, never again on rescroll
+        }
+
+    });
+
+}, { threshold: 0.3 });
+
+skillItems.forEach((item) => skillObserver.observe(item));
