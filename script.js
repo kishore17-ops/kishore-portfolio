@@ -8,33 +8,43 @@ const roles = [
 let roleIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
+let typingTimer = null;
 
 function typeEffect() {
-
   const currentRole = roles[roleIndex];
   const typingElement = document.getElementById("typing");
+  if (!typingElement) return;
 
-  if (isDeleting) {
-    typingElement.textContent =
-      currentRole.substring(0, charIndex--);
+  // Determine next state BEFORE rendering
+  let speed;
+
+  if (!isDeleting) {
+    // Still typing — render current charIndex, then advance
+    typingElement.textContent = currentRole.substring(0, charIndex);
+    charIndex++;
+    if (charIndex > currentRole.length) {
+      // Finished typing — pause before deleting
+      isDeleting = true;
+      speed = 1800;
+    } else {
+      speed = 110;
+    }
   } else {
-    typingElement.textContent =
-      currentRole.substring(0, charIndex++);
+    // Deleting
+    typingElement.textContent = currentRole.substring(0, charIndex);
+    charIndex--;
+    if (charIndex < 0) {
+      // Finished deleting — move to next role
+      isDeleting = false;
+      charIndex = 0;
+      roleIndex = (roleIndex + 1) % roles.length;
+      speed = 400; // brief pause before typing next
+    } else {
+      speed = 55;
+    }
   }
 
-  let speed = isDeleting ? 50 : 100;
-
-  if (!isDeleting && charIndex === currentRole.length + 1) {
-    speed = 1500;
-    isDeleting = true;
-  }
-
-  if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    roleIndex = (roleIndex + 1) % roles.length;
-  }
-
-  setTimeout(typeEffect, speed);
+  typingTimer = setTimeout(typeEffect, speed);
 }
 
 typeEffect();
@@ -147,11 +157,58 @@ aboutLinks.forEach((link) => {
         aboutDetails?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
 });
-function toggleMenu() {
-    document
-    .querySelector(".nav-links")
-    .classList.toggle("active");
+// ─── Hamburger / Mobile Nav ───────────────────────────────────────────
+const hamburgerBtn  = document.querySelector(".hamburger");
+const navLinksList  = document.querySelector(".nav-links");
+
+const iconOpen = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;display:block;">
+  <line x1="3" y1="6" x2="21" y2="6"/>
+  <line x1="3" y1="12" x2="21" y2="12"/>
+  <line x1="3" y1="18" x2="21" y2="18"/>
+</svg>`;
+
+const iconClose = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;display:block;">
+  <line x1="4" y1="4" x2="20" y2="20"/>
+  <line x1="20" y1="4" x2="4" y2="20"/>
+</svg>`;
+
+// Create backdrop overlay element
+const navBackdrop = document.createElement("div");
+navBackdrop.className = "nav-backdrop";
+document.body.appendChild(navBackdrop);
+
+function openMenu() {
+  navLinksList.classList.add("active");
+  navBackdrop.classList.add("active");
+  hamburgerBtn.innerHTML = iconClose;
+  document.body.style.overflow = "hidden";
 }
+
+function closeMenu() {
+  navLinksList.classList.remove("active");
+  navBackdrop.classList.remove("active");
+  hamburgerBtn.innerHTML = iconOpen;
+  document.body.style.overflow = "";
+}
+
+function toggleMenu() {
+  navLinksList.classList.contains("active") ? closeMenu() : openMenu();
+}
+
+// Close menu when any nav link is clicked
+if (navLinksList) {
+  navLinksList.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+}
+
+// Close menu when backdrop is tapped
+navBackdrop.addEventListener("click", closeMenu);
+
+// Close on Escape key
+window.addEventListener("keydown", e => {
+  if (e.key === "Escape" && navLinksList.classList.contains("active")) closeMenu();
+});
 const skillItems = document.querySelectorAll(".progress-item");
 
 function animateSkillCount(el, target, duration) {

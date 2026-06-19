@@ -211,6 +211,23 @@ header.hero{
     font-weight: 600;
     color: var(--accent-blue);
     margin: 4px 0 6px 0;
+    min-height: 1.8em; /* Prevents layout jump between roles */
+    display: flex;
+    align-items: center;
+}
+
+/* Blinking cursor after the typed text */
+#typing::after {
+    content: "|";
+    display: inline-block;
+    color: var(--accent-coral);
+    margin-left: 2px;
+    animation: blink-cursor 0.75s step-end infinite;
+}
+
+@keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
 }
 
 .hero-meta {
@@ -1198,6 +1215,35 @@ footer p{
 
     backdrop-filter:blur(10px);
 }
+
+/* Hamburger button */
+.hamburger {
+    cursor: pointer;
+    display: none;
+    background: none;
+    border: none;
+    padding: 4px;
+    color: var(--accent-coral);
+    transition: transform 0.25s ease;
+}
+.hamburger:hover { transform: scale(1.12); }
+
+/* Mobile nav backdrop overlay */
+.nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 998;
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.nav-backdrop.active {
+    display: block;
+    opacity: 1;
+}
+
 /* Mobile Responsive Premium Design */
 
 @keyframes shine{
@@ -1235,12 +1281,51 @@ footer p{
         color:var(--accent-coral);
     }
 
-    .nav-links{
-        display:none;
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(6, 9, 19, 0.97);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-color);
+        z-index: 999;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+                    padding 0.3s ease;
     }
 
-    .nav-links a{
-        font-size:0.9rem;
+    .nav-links.active {
+        max-height: 420px;
+        padding: 12px 0 20px;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        list-style: none;
+    }
+
+    .nav-links a {
+        display: block;
+        font-size: 1rem;
+        padding: 13px 20px;
+        color: var(--text-primary);
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        background: rgba(255, 94, 126, 0.1);
+        color: var(--accent-coral);
+        border-bottom-color: rgba(255,255,255,0.04);
     }
 
     /* Hero Section Responsive */
@@ -1291,12 +1376,16 @@ footer p{
         grid-template-columns: 1fr;
     }
 
+    /* Profile widget appears FIRST on mobile */
     .hero-profile-widget {
+        order: -1;
         gap: 15px;
         padding: 20px;
     }
 
-
+    .hero-main-card {
+        order: 0;
+    }
 
     .widget-footer-grid {
         grid-template-columns: 1fr;
