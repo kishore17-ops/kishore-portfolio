@@ -147,3 +147,8 @@ aboutLinks.forEach((link) => {
         aboutDetails?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
 });
+function toggleMenu() {
+    document
+    .querySelector(".nav-links")
+    .classList.toggle("active");
+}

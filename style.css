@@ -99,9 +99,9 @@ header.hero .hero-image{
 }
 
 header.hero .hero-image img{
-    width:280px;
-    height:280px;
-    border-radius:20px;
+    width:340px;
+    height:340px;
+    border-radius:30px;
     object-fit:cover;
     border:3px solid rgba(0,255,255,0.5);
     
@@ -1021,4 +1021,59 @@ footer p{
     border-radius:20px;
     background:rgba(255,255,255,0.1);
     font-size:14px;
+}
+h2 i,
+summary i{
+    color:#00ffff;
+    margin-right:10px;
+}
+.project-card h3 i{
+    color:#00ffff;
+    margin-right:10px;
+    font-size:1.1rem;
+}
+.project-card h3 i{
+    color:#00ffff;
+    margin-right:10px;
+    font-size:1.1rem;
+}
+.hamburger{
+    display:none;
+    font-size:28px;
+    color:#00ffff;
+    cursor:pointer;
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    .hamburger{
+        display:block;
+    }
+
+    .nav-links{
+        display:none;
+        flex-direction:column;
+        position:absolute;
+        top:70px;
+        right:20px;
+
+        background:#081b3a;
+
+        width:220px;
+
+        border-radius:15px;
+
+        padding:15px;
+
+        box-shadow:0 0 20px rgba(0,255,255,0.2);
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .nav-links li{
+        margin:12px 0;
+    }
 }
