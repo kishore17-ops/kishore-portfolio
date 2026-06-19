@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kishore Portfolio</title>
+<title>Kishore Thiyagarajan Portfolio</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -19,7 +19,7 @@ rel="stylesheet">
 <nav class="navbar">
 
     <div class="logo">  
-        KISHORE
+        KISHORE THIYAGARAJAN
     </div>
 
     <div class="hamburger" onclick="toggleMenu()">
@@ -32,9 +32,7 @@ rel="stylesheet">
 
         <li><a href="#about">About</a></li>
 
-        <li><a href="#education">Education</a></li>
-
-        <li><a href="#skills">Skills</a></li>
+        <li><a href="#internship">Internship</a></li>
 
         <li><a href="#projects">Projects</a></li>
 
@@ -52,60 +50,124 @@ rel="stylesheet">
 </div>
 <div id="particles"></div>
 <header class="hero">
-
-    <div class="hero-content">
-
-        <div class="hero-text">
-
-            <p class="welcome">WELCOME TO MY PORTFOLIO</p>
-
-            <h1>
-                Hi, I'm <span>Kishore T</span>
+    <div class="hero-container">
+        
+        <!-- Left Side: Main profile details card -->
+        <div class="hero-main-card">
+            
+            <h1 class="hero-title">
+                Developing intelligent systems & <span>polished software experiences</span>
             </h1>
-
-            <h2>
-                <span id="typing"></span>
-            </h2>
-
-            <p class="hero-description">
-                Passionate about Artificial Intelligence,
-                Web Development, Problem Solving and
-                Building Innovative Technology Solutions.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#about" class="btn">About</a>
-
-<a href="#contact" class="btn btn-outline">Contact</a>
-
-<a href="./resume.pdf" class="btn" download>
-    Resume
-</a>
-
-<a href="https://www.linkedin.com/in/kishore-thiyagarajan-17112007/"
-   target="_blank"
-   class="btn btn-outline">
-    <i class="fab fa-linkedin"></i> LinkedIn
-</a>
+            
+            <div class="hero-profile-info">
+                <h3 class="hero-name">Kishore Thiyagarajan</h3>
+                <h4 class="hero-role"><span id="typing"></span></h4>
+                <p class="hero-meta">B.Tech - Artificial Intelligence & Data Science</p>
             </div>
-
+            
+            <p class="hero-description">
+                I specialize in building efficient software applications and machine learning models. My approach combines structured logic with responsive user experiences, focusing on performance, data-driven design, and clean architecture.
+            </p>
+            
+            <div class="hero-actions">
+                <a href="#about" class="btn btn-primary">
+                    Explore Profile
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <a href="./resume.pdf" class="btn btn-outline" download>
+                    Download Resume
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="hero-socials">
+                <a href="https://www.linkedin.com/in/kishore-thiyagarajan-17112007/" target="_blank" class="social-link" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-11h2.88v1.5h.04c.4-.76 1.39-1.56 2.86-1.56 3.06 0 3.63 2.01 3.63 4.62v6.44z"></path>
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/kishore17-ops" target="_blank" class="social-link" title="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+            
+            <div class="hero-highlights">
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                        </svg>
+                    </div>
+                    <div class="highlight-text">
+                        <span class="highlight-label">PRIMARY FOCUS</span>
+                        <span class="highlight-value">Backend & Full-Stack Development</span>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <div class="highlight-text">
+                        <span class="highlight-label">WORKING STYLE</span>
+                        <span class="highlight-value">Efficient, clean, and performant builds</span>
+                    </div>
+                </div>
+            </div>
+            
         </div>
-
-        <div class="hero-image">
-
-            <img id="profileImage" src="profile.jpg" alt="Kishore">
-
+        
+        <!-- Right Side: Secondary widget / Profile Card -->
+        <div class="hero-profile-widget">
+            <div class="widget-header">
+                <div>
+                    <span class="widget-label">PROFILE</span>
+                    <h3 class="widget-name">Kishore Thiyagarajan</h3>
+                </div>
+                <div class="status-pill">
+                    <span class="glow-dot"></span>
+                    Open to new challenges
+                </div>
+            </div>
+            
+            <div class="widget-image-container">
+                <img id="profileImage" src="profile.jpg" alt="Kishore Thiyagarajan">
+            </div>
+            
+            <div class="widget-footer-grid">
+                <div class="widget-sub-box">
+                    <span class="sub-label">DISCIPLINE</span>
+                    <span class="sub-value">Artificial Intelligence and Data Science</span>
+                </div>
+                <div class="widget-sub-box">
+                    <span class="sub-label">LOCATION</span>
+                    <span class="sub-value">Tamil Nadu, India</span>
+                </div>
+            </div>
         </div>
-
+        
     </div>
-
 </header>
 
 <div id="lightboxOverlay" class="lightbox-overlay" aria-hidden="true">
     <div class="lightbox-content">
         <button id="lightboxClose" class="lightbox-close" aria-label="Close full photo">×</button>
-        <img id="lightboxImg" src="profile.jpg" alt="Kishore full photo">
+        <img id="lightboxImg" src="profile.jpg" alt="Kishore Thiyagarajan full photo">
     </div>
 </div> 
 
@@ -114,7 +176,7 @@ rel="stylesheet">
     <summary><i class="fas fa-user"></i> About Me</summary>
 
     <p>
-        I am Kishore T, currently pursuing B.Tech in Artificial Intelligence
+        I am Kishore Thiyagarajan, currently pursuing B.Tech in Artificial Intelligence
         and Data Science at J.N.N Institute of Engineering. I am a motivated
         and hardworking student with a strong interest in technology,
         problem solving, and web development. I enjoy learning new skills
@@ -459,7 +521,7 @@ rel="stylesheet">
 </div>
 
 <footer>
-    <h3>Kishore T</h3>
+    <h3>Kishore Thiyagarajan</h3>
     <p>Artificial Intelligence & Data Science Student</p>
     <p>Built with HTML, CSS & JavaScript</p>
 </footer>
