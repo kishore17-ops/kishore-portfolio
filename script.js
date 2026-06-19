@@ -157,57 +157,62 @@ aboutLinks.forEach((link) => {
         aboutDetails?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
 });
-// ─── Hamburger / Mobile Nav ───────────────────────────────────────────
-const hamburgerBtn  = document.querySelector(".hamburger");
-const navLinksList  = document.querySelector(".nav-links");
-
-const iconOpen = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;display:block;">
-  <line x1="3" y1="6" x2="21" y2="6"/>
-  <line x1="3" y1="12" x2="21" y2="12"/>
-  <line x1="3" y1="18" x2="21" y2="18"/>
-</svg>`;
-
-const iconClose = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;display:block;">
-  <line x1="4" y1="4" x2="20" y2="20"/>
-  <line x1="20" y1="4" x2="4" y2="20"/>
-</svg>`;
-
-// Create backdrop overlay element
-const navBackdrop = document.createElement("div");
-navBackdrop.className = "nav-backdrop";
-document.body.appendChild(navBackdrop);
+// ─── Premium Side Drawer / Mobile Nav ────────────────────────────────
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const mobileDrawer = document.getElementById("mobileDrawer");
+const navBackdrop  = document.getElementById("navBackdrop");
+const drawerClose  = document.getElementById("drawerClose");
+const drawerLinks  = document.querySelectorAll("#drawerNav a");
 
 function openMenu() {
-  navLinksList.classList.add("active");
+  mobileDrawer.classList.add("active");
   navBackdrop.classList.add("active");
-  hamburgerBtn.innerHTML = iconClose;
+  hamburgerBtn.classList.add("open");
+  hamburgerBtn.setAttribute("aria-expanded", "true");
+  mobileDrawer.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 }
 
 function closeMenu() {
-  navLinksList.classList.remove("active");
+  mobileDrawer.classList.remove("active");
   navBackdrop.classList.remove("active");
-  hamburgerBtn.innerHTML = iconOpen;
+  hamburgerBtn.classList.remove("open");
+  hamburgerBtn.setAttribute("aria-expanded", "false");
+  mobileDrawer.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
 }
 
 function toggleMenu() {
-  navLinksList.classList.contains("active") ? closeMenu() : openMenu();
+  mobileDrawer.classList.contains("active") ? closeMenu() : openMenu();
 }
 
-// Close menu when any nav link is clicked
-if (navLinksList) {
-  navLinksList.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", closeMenu);
-  });
-}
+// Wire up close button inside the drawer
+if (drawerClose) drawerClose.addEventListener("click", closeMenu);
 
-// Close menu when backdrop is tapped
-navBackdrop.addEventListener("click", closeMenu);
+// Close when backdrop is tapped
+if (navBackdrop) navBackdrop.addEventListener("click", closeMenu);
 
-// Close on Escape key
+// Close when any drawer link is tapped
+drawerLinks.forEach(link => link.addEventListener("click", closeMenu));
+
+// Close on Escape
 window.addEventListener("keydown", e => {
-  if (e.key === "Escape" && navLinksList.classList.contains("active")) closeMenu();
+  if (e.key === "Escape" && mobileDrawer.classList.contains("active")) closeMenu();
+});
+
+// Keep drawer active link in sync with scroll position
+window.addEventListener("scroll", () => {
+  let current = "";
+  document.querySelectorAll("section[id], header[id]").forEach(sec => {
+    if (scrollY >= sec.offsetTop - 160) current = sec.id || "";
+  });
+  drawerLinks.forEach(link => {
+    link.classList.remove("active");
+    const href = link.getAttribute("href");
+    if (href === "#" + current || (href === "#" && current === "")) {
+      link.classList.add("active");
+    }
+  });
 });
 const skillItems = document.querySelectorAll(".progress-item");
 

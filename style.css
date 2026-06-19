@@ -1216,33 +1216,234 @@ footer p{
     backdrop-filter:blur(10px);
 }
 
-/* Hamburger button */
+/* ─── Hamburger Button ─────────────────────────────────── */
 .hamburger {
     cursor: pointer;
     display: none;
-    background: none;
-    border: none;
-    padding: 4px;
+    background: rgba(255, 94, 126, 0.08);
+    border: 1px solid rgba(255, 94, 126, 0.2);
+    border-radius: 10px;
+    padding: 8px 10px;
     color: var(--accent-coral);
-    transition: transform 0.25s ease;
+    transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s;
+    line-height: 0;
 }
-.hamburger:hover { transform: scale(1.12); }
+.hamburger:hover {
+    background: rgba(255, 94, 126, 0.18);
+    border-color: rgba(255, 94, 126, 0.5);
+    transform: scale(1.06);
+}
+.hamburger svg {
+    display: block;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hamburger.open svg {
+    transform: rotate(90deg);
+}
 
-/* Mobile nav backdrop overlay */
+/* ─── Full-Screen Mobile Drawer ────────────────────────── */
 .nav-backdrop {
-    display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
     z-index: 998;
-    backdrop-filter: blur(2px);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
 }
 .nav-backdrop.active {
-    display: block;
     opacity: 1;
+    pointer-events: auto;
 }
+
+/* The drawer panel itself */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(80vw, 320px);
+    height: 100dvh;
+    background: linear-gradient(160deg,
+        rgba(10, 14, 28, 0.98) 0%,
+        rgba(16, 20, 40, 0.98) 60%,
+        rgba(8, 12, 26, 0.98) 100%);
+    border-left: 1px solid rgba(255, 94, 126, 0.15);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    transform: translateX(110%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -12px 0 60px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+}
+.mobile-drawer.active {
+    transform: translateX(0);
+}
+
+/* Top bar inside drawer */
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+}
+.drawer-logo {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-coral);
+    opacity: 0.85;
+}
+.drawer-close {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(255, 94, 126, 0.1);
+    border: 1px solid rgba(255, 94, 126, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--accent-coral);
+    transition: background 0.2s, transform 0.2s;
+    flex-shrink: 0;
+}
+.drawer-close:hover {
+    background: rgba(255, 94, 126, 0.22);
+    transform: scale(1.1);
+}
+
+/* Greeting block */
+.drawer-greeting {
+    padding: 22px 24px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+}
+.drawer-greeting .greeting-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+.drawer-greeting .greeting-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.drawer-greeting .greeting-status {
+    font-size: 0.78rem;
+    color: var(--accent-blue);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 4px;
+}
+.drawer-greeting .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 6px #22c55e;
+    animation: pulse-green 2s infinite;
+}
+@keyframes pulse-green {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+}
+
+/* Nav links list */
+.drawer-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.drawer-nav li {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.mobile-drawer.active .drawer-nav li:nth-child(1) { opacity:1; transform:none; transition-delay: 0.08s; }
+.mobile-drawer.active .drawer-nav li:nth-child(2) { opacity:1; transform:none; transition-delay: 0.13s; }
+.mobile-drawer.active .drawer-nav li:nth-child(3) { opacity:1; transform:none; transition-delay: 0.18s; }
+.mobile-drawer.active .drawer-nav li:nth-child(4) { opacity:1; transform:none; transition-delay: 0.23s; }
+.mobile-drawer.active .drawer-nav li:nth-child(5) { opacity:1; transform:none; transition-delay: 0.28s; }
+.mobile-drawer.active .drawer-nav li:nth-child(6) { opacity:1; transform:none; transition-delay: 0.33s; }
+
+.drawer-nav a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 24px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 0;
+    position: relative;
+    transition: color 0.2s, background 0.2s;
+    border-left: 3px solid transparent;
+}
+.drawer-nav a .nav-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
+    flex-shrink: 0;
+    transition: opacity 0.2s;
+}
+.drawer-nav a:hover,
+.drawer-nav a.active {
+    color: #fff;
+    background: rgba(255, 94, 126, 0.08);
+    border-left-color: var(--accent-coral);
+}
+.drawer-nav a:hover .nav-icon,
+.drawer-nav a.active .nav-icon {
+    opacity: 1;
+    color: var(--accent-coral);
+}
+.drawer-nav a.active {
+    color: var(--accent-coral);
+    font-weight: 600;
+}
+
+/* Social row at bottom */
+.drawer-footer {
+    padding: 16px 24px 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+}
+.drawer-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+.drawer-social:hover {
+    background: rgba(255, 94, 126, 0.15);
+    border-color: rgba(255, 94, 126, 0.35);
+    color: var(--accent-coral);
+}
+.drawer-social svg { width: 16px; height: 16px; }
 
 /* Mobile Responsive Premium Design */
 
@@ -1281,51 +1482,9 @@ footer p{
         color:var(--accent-coral);
     }
 
+    /* Old nav-links hidden on mobile — drawer handles navigation */
     .nav-links {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-        position: fixed;
-        top: 60px;
-        left: 0;
-        right: 0;
-        background: rgba(6, 9, 19, 0.97);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border-color);
-        z-index: 999;
-        padding: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1),
-                    padding 0.3s ease;
-    }
-
-    .nav-links.active {
-        max-height: 420px;
-        padding: 12px 0 20px;
-    }
-
-    .nav-links li {
-        width: 100%;
-        text-align: center;
-        list-style: none;
-    }
-
-    .nav-links a {
-        display: block;
-        font-size: 1rem;
-        padding: 13px 20px;
-        color: var(--text-primary);
-        border-bottom: 1px solid rgba(255,255,255,0.04);
-        transition: background 0.2s, color 0.2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-        background: rgba(255, 94, 126, 0.1);
-        color: var(--accent-coral);
-        border-bottom-color: rgba(255,255,255,0.04);
+        display: none !important;
     }
 
     /* Hero Section Responsive */
