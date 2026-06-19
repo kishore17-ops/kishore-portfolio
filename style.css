@@ -881,18 +881,26 @@ footer p{
     /* Navbar */
 
     .navbar{
-        padding:12px;
-        flex-direction:column;
+        padding:12px 5%;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
     }
 
     .logo{
         font-size:1.2rem;
+        order:1;
+    }
+
+    .hamburger{
+        display:block;
+        order:2;
+        font-size:1.4rem;
+        color:#00ffff;
     }
 
     .nav-links{
-        gap:10px;
-        flex-wrap:wrap;
-        justify-content:center;
+        display:none;
     }
 
     .nav-links a{
