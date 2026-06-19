@@ -194,3 +194,97 @@ const skillObserver = new IntersectionObserver((entries, obs) => {
 }, { threshold: 0.3 });
 
 skillItems.forEach((item) => skillObserver.observe(item));
+
+// Contact Form Submission & Validation
+const contactForm = document.getElementById("contactForm");
+const submitBtn = document.getElementById("submitBtn");
+const btnText = document.getElementById("btnText");
+const responseMessage = document.getElementById("responseMessage");
+
+if (contactForm && submitBtn) {
+    const updateSubmitButtonState = () => {
+        if (contactForm.checkValidity()) {
+            submitBtn.classList.remove("disabled");
+        } else {
+            submitBtn.classList.add("disabled");
+        }
+    };
+
+    // Monitor input across all fields
+    contactForm.addEventListener("input", updateSubmitButtonState);
+
+    // Initial state check
+    updateSubmitButtonState();
+
+    contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        // Check validity: if invalid, trigger browser default validation bubbles
+        if (!contactForm.checkValidity()) {
+            contactForm.reportValidity();
+            return;
+        }
+
+        // Set Loading State
+        submitBtn.setAttribute("disabled", "true");
+        submitBtn.classList.add("disabled");
+        btnText.textContent = "Sending...";
+
+        const formData = new FormData(contactForm);
+
+        fetch("https://formsubmit.co/ajax/kishorethiyagarajan907@gmail.com", {
+            method: "POST",
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error("Network response was not ok.");
+        })
+        .then(data => {
+            // Success Handling
+            contactForm.reset();
+            responseMessage.textContent = "Your form has been submitted.";
+            responseMessage.className = "response-message success";
+            responseMessage.style.opacity = "1";
+
+            // Re-disable button state after form reset
+            submitBtn.removeAttribute("disabled");
+            updateSubmitButtonState();
+
+            // Display success feedback for 12 seconds, then fade out
+            setTimeout(() => {
+                responseMessage.style.opacity = "0";
+                setTimeout(() => {
+                    responseMessage.textContent = "";
+                }, 300);
+            }, 12000);
+        })
+        .catch(error => {
+            // Error Handling
+            responseMessage.textContent = "Something went wrong. Please try again.";
+            responseMessage.className = "response-message error";
+            responseMessage.style.opacity = "1";
+
+            // Restore active state to let user try again
+            submitBtn.removeAttribute("disabled");
+            updateSubmitButtonState();
+
+            // Display error feedback for 6 seconds, then fade out
+            setTimeout(() => {
+                responseMessage.style.opacity = "0";
+                setTimeout(() => {
+                    responseMessage.textContent = "";
+                }, 300);
+            }, 6000);
+        })
+        .finally(() => {
+            // Restore button text
+            btnText.textContent = "Send Mail";
+        });
+    });
+}
