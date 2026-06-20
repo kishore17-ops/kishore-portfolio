@@ -5,13 +5,13 @@
     --border-color: rgba(255, 255, 255, 0.08);
     
     /* Cosmic Coral & Aurora Blue Colors */
-    --accent-coral: #ff5e7e;
-    --accent-blue: #00bcff;
+    --accent-coral: #a75eff;
+    --accent-blue: #3c00ff;
     --accent-blue-deep: #3b82f6;
     
     --text-primary: #ffffff;
     --text-secondary: #cbd5e1;
-    --text-muted: #64748b;
+    --text-muted: #64658b;
     
     --glow-coral: rgba(255, 94, 126, 0.2);
     --glow-blue: rgba(0, 188, 255, 0.2);
@@ -659,6 +659,14 @@ footer p{
     margin:80px auto;
 }
 
+.skills-section,
+.internship-section,
+.projects-section{
+    width:90%;
+    max-width:1200px;
+    margin:120px auto;
+}
+
 .skills-section h2,
 .projects-section h2{
     text-align:center;
@@ -1176,8 +1184,32 @@ footer p{
     height:100%;
     width:0%;
     border-radius:30px;
-    background:linear-gradient(90deg, var(--accent-coral), var(--accent-blue));
-    transition:width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background:linear-gradient(90deg,var(--accent-coral),var(--accent-blue));
+
+    transition:width 0.9s ease-out;
+
+    will-change:width;
+    transform:translateZ(0);
+}
+
+.progress-item.in-view .fill{
+    box-shadow:
+    0 0 15px rgba(255,94,126,0.6),
+    0 0 30px rgba(0,188,255,0.4);
+}
+
+.progress-item{
+    padding:18px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+    margin-bottom:20px;
+    transition:0.4s ease;
+}
+
+.progress-item:hover{
+    transform:translateY(-5px);
+    border-color:rgba(255,94,126,0.4);
 }
 
 .progress-item:hover .bar{
@@ -2074,4 +2106,32 @@ summary svg {
     opacity: 1;
     transform: scale(1) translateY(0);
     transition: opacity 0.5s ease, transform 0.5s ease;
+}
+@media (max-width:768px){
+
+    .hero-main-card{
+        align-items:center;
+        text-align:center;
+    }
+
+    .hero-name{
+        font-size:1.8rem;
+    }
+
+    .hero-role{
+        justify-content:center;
+    }
+
+    .hero-meta{
+        text-align:center;
+    }
+
+}
+.section-subtitle{
+    text-align:center;
+    color:var(--text-secondary);
+    font-size:1rem;
+    max-width:700px;
+    margin:10px auto 40px;
+    line-height:1.7;
 }
