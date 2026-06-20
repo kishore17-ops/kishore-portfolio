@@ -1,3 +1,72 @@
+// ═══ Premium Intro Loader ═══════════════════════════════════
+(function () {
+    document.documentElement.classList.add("intro-active");
+
+    const loader  = document.getElementById("introLoader");
+    const fill    = document.getElementById("introLoadFill");
+    const percent = document.getElementById("introLoadPercent");
+    const content = document.getElementById("siteContent");
+    const particlesWrap = document.getElementById("introParticles");
+
+    if (!loader || !content) {
+        // Critical elements missing — don't lock the page, just bail safely
+        document.documentElement.classList.remove("intro-active");
+        if (loader) loader.remove();
+        return;
+    }
+
+    // Floating particles (optional — skip safely if container missing)
+    if (particlesWrap) {
+        for (let i = 0; i < 28; i++) {
+            const p = document.createElement("div");
+            p.className = "intro-particle";
+            p.style.left = Math.random() * 100 + "%";
+            p.style.animationDuration = (Math.random() * 4 + 4) + "s";
+            p.style.animationDelay = (Math.random() * 3) + "s";
+            p.style.opacity = (Math.random() * 0.5 + 0.2).toFixed(2);
+            particlesWrap.appendChild(p);
+        }
+    }
+
+    function finishIntro() {
+        loader.classList.add("fade-out");
+        content.classList.add("revealed");
+        document.documentElement.classList.remove("intro-active");
+        setTimeout(() => loader.remove(), 750);
+    }
+
+    function startBar() {
+        const duration = 1200;
+        let startTime = null;
+
+        function tick(now) {
+            if (!startTime) startTime = now;
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const pct = Math.round(progress * 100);
+
+            if (fill) fill.style.width = pct + "%";
+            if (percent) percent.textContent = pct + "%";
+
+            if (progress < 1) {
+                requestAnimationFrame(tick);
+            } else {
+                finishIntro();
+            }
+        }
+        requestAnimationFrame(tick);
+    }
+
+    // Start the bar after the name/tagline animation has had time to play
+    setTimeout(startBar, 1100);
+
+    // Safety net — guarantees the loader can NEVER hang forever
+    setTimeout(() => {
+        if (document.body.contains(loader) && !loader.classList.contains("fade-out")) {
+            finishIntro();
+        }
+    }, 2800);
+})();
 const roles = [
   "AI & Data Science Student",
   "Python Programmer",
